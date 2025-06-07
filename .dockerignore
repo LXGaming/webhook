@@ -1,0 +1,13 @@
+﻿# Directories
+**/.git/
+**/.github/
+**/.idea/
+**/.vs/
+
+# Files
+**/.dockerignore
+**/.gitattributes
+**/.gitignore
+**/docker-compose.yml
+**/Dockerfile*
+**/*Dockerfile

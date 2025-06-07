@@ -1,0 +1,11 @@
+services:
+  webhook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webhook
+    ports:
+      - 9000:9000/tcp
+    restart: unless-stopped
+    volumes:
+      - ./config:/config:ro

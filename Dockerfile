@@ -29,10 +29,10 @@ RUN CGO_ENABLED=0 \
 FROM debian:bookworm-slim
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        ca-certificates curl jq tini \
+        ca-certificates curl jq \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=build-app --chmod=755 /app ./
 EXPOSE 9000
-ENTRYPOINT ["/usr/bin/tini", "--", "/app/webhook"]
+ENTRYPOINT ["/app/webhook"]
 CMD ["-hooks", "/config/hooks.yml", "-hotreload", "-verbose"]

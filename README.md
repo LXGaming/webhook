@@ -18,6 +18,7 @@ services:
   webhook:
     container_name: webhook
     image: lxgaming/webhook:latest
+    init: true
     ports:
       - 9000:9000/tcp
     restart: unless-stopped
@@ -27,7 +28,9 @@ services:
 
 ### Docker
 ```shell
-docker run -d \
+docker run \
+  --detach \
+  --init \
   --name webhook \
   --publish 9000:9000/tcp \
   --restart unless-stopped \

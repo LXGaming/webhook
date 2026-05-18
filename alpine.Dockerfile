@@ -26,9 +26,9 @@ RUN CGO_ENABLED=0 \
 # Final
 FROM alpine:3.22
 RUN apk add --no-cache --upgrade \
-        curl jq tini tzdata
+        curl jq tzdata
 WORKDIR /app
 COPY --from=build-app --chmod=755 /app ./
 EXPOSE 9000
-ENTRYPOINT ["/sbin/tini", "--", "/app/webhook"]
+ENTRYPOINT ["/app/webhook"]
 CMD ["-hooks", "/config/hooks.yml", "-hotreload", "-verbose"]

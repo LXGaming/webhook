@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: webhook
+    init: true
     ports:
       - 9000:9000/tcp
     restart: unless-stopped
